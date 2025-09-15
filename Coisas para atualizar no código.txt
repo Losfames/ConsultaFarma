@@ -1,0 +1,3 @@
+Adicionar um hash para as senhas
+Adicionar uma rota de edição de funcionarios
+Adicionar uma rota para busca de usuario por ID, CPF, Nome
