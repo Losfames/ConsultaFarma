@@ -6,7 +6,7 @@ from flask_login import UserMixin
 from datetime import datetime
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:2106@localhost:5432/ConsultaFarma'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://neondb_owner:npg_tyo9NsGnJP3F@ep-weathered-sky-ac4h3zbt-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
