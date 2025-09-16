@@ -212,6 +212,29 @@ def list_products():
         })
     return jsonify(result)
 
+# Rota para buscar remédios pelo nome
+@app.route('/api/products/search', methods=['GET'])
+def search_products():
+    nome_query = request.args.get("nome", "").strip()
+    if not nome_query:
+        return jsonify({"message": "Informe o nome do remédio para pesquisar!"}), 400
+
+    # busca remedios com nome parecido
+    remedios = Remedio.query.filter(Remedio.nome.ilike(f"%{nome_query}%")).all()
+    
+    if not remedios:
+        return jsonify({"message": "Nenhum medicamento encontrado!"}), 404
+
+    result = []
+    for r in remedios:
+        result.append({
+            "idremedio": r.idremedio,
+            "nome": r.nome,
+            "descricao": r.descricao
+        })
+
+    return jsonify(result)
+
     # Usado para iniciar o servidor Flask
 if __name__ == "__main__":
     with app.app_context():
