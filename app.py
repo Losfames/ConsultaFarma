@@ -6,12 +6,15 @@ from flask_cors import CORS
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 from datetime import datetime
 from sqlalchemy import or_
+from dotenv import load_dotenv
+import os
+
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'senha_secreta123'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://neondb_owner:npg_tyo9NsGnJP3F@ep-weathered-sky-ac4h3zbt-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
+load_dotenv()  # carrega variáveis do .env
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DB_URI')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # Desativa o aviso de modificação do SQLAlchemy
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -21,11 +24,12 @@ login_manager.login_view = 'login'
 def unauthorized():
     return jsonify({"message": "Você precisa estar logado para acessar essa função!"}), 401
 
+#criando instance do banco de dados
 db = SQLAlchemy(app)
+login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
-CORS(app)
-
+CORS(app)  # ativa CORS
 
 # Modelagem tabela de funcionario (id, nome, senha)
 class funcionario(db.Model, UserMixin):
