@@ -1,3 +1,7 @@
 Adicionar um hash para as senhas
 Adicionar uma rota de edição de funcionarios
 Adicionar uma rota para busca de usuario por ID, CPF, Nome
+Adicionar endereço pro usuário
+Adicionar diferentes permissões entre funcionario e usuário.
+Consultar de qual usuário são os itens no carrinho antes da remoção.
+Otimizar o codigo em algumas consultas.
