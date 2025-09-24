@@ -5,3 +5,4 @@ Adicionar endereço pro usuário
 Adicionar diferentes permissões entre funcionario e usuário.
 Consultar de qual usuário são os itens no carrinho antes da remoção.
 Otimizar o codigo em algumas consultas.
+Atualizar o arquivo de bibliotecas necessárias.
